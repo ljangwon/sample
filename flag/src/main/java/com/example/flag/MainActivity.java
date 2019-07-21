@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<Flag> flags = new ArrayList<Flag>();
+    ArrayList<Flag> flags ;
 
     TextView name;
     ImageView bigFlag;
@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
         flags = readFlags();
 
-        ArrayAdapter<Flag> adapter = new FlagAdapter(this,flags);
+        ArrayAdapter<Flag> adapter = new FlagsAdapter(this,flags);
 
         list.setAdapter( adapter);
 
     }
     private ArrayList<Flag> readFlags() {
-        ArrayList<Flag> flags = new ArrayList<Flag>();
+        ArrayList<Flag> flags = new ArrayList<>();
         flags.clear();
         flags.add(new Flag("Ghana", "GH", "288", "가나", R.drawable.gh));
         flags.add(new Flag("Gabon", "GA", "266", "가봉", R.drawable.ga));

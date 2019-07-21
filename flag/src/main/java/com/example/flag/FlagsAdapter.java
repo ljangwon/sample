@@ -9,11 +9,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-class FlagAdapter extends ArrayAdapter<Flag> {
-    ArrayList<Flag> flags = new ArrayList<Flag>();
-    Activity activity;
+class FlagsAdapter extends ArrayAdapter<Flag> {
+    private ArrayList<Flag> flags;
+    private Activity activity;
+    private int position;
+    private View convertView;
+    private ViewGroup parent;
 
-    public FlagAdapter(Activity activity, ArrayList<Flag> flags) {
+    FlagsAdapter(Activity activity, ArrayList<Flag> flags) {
         super(activity, R.layout.flag_list_item, flags);
         this.flags = flags;
         this.activity = activity;
@@ -21,18 +24,22 @@ class FlagAdapter extends ArrayAdapter<Flag> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        this.position = position;
+        this.convertView = convertView;
 
-        FlagViewHolder flagViewHolder=null;
+        this.parent = parent;
+
+        FlagViewHolder flagViewHolder;
         Flag flag = flags.get(position);
         View itemView = convertView;
         if (itemView == null) {  //
             flagViewHolder = new FlagViewHolder();   //화면 재활용 객체
             itemView = activity.getLayoutInflater().inflate(R.layout.flag_list_item, parent, false);
-            flagViewHolder.imageView = (ImageView)itemView.findViewById(R.id.flagImage);
-            flagViewHolder.flagKorName = (TextView) itemView.findViewById(R.id.flagKorName);
-            flagViewHolder.flagCode = (TextView) itemView.findViewById(R.id.flagCode);
-            flagViewHolder.flagEngName = (TextView) itemView.findViewById(R.id.flagEngName);
-            flagViewHolder.flagShortName = (TextView) itemView.findViewById(R.id.flagShortName);
+            flagViewHolder.imageView = itemView.findViewById(R.id.flagImage);
+            flagViewHolder.flagKorName =  itemView.findViewById(R.id.flagKorName);
+            flagViewHolder.flagCode =  itemView.findViewById(R.id.flagCode);
+            flagViewHolder.flagEngName =  itemView.findViewById(R.id.flagEngName);
+            flagViewHolder.flagShortName =  itemView.findViewById(R.id.flagShortName);
             itemView.setTag(flagViewHolder);
         }else{
             flagViewHolder = (FlagViewHolder) itemView.getTag();
@@ -46,13 +53,12 @@ class FlagAdapter extends ArrayAdapter<Flag> {
 
         return itemView;
     }
-
 }
 
 class FlagViewHolder{
-    public ImageView imageView;
-    public TextView flagKorName;
-    public TextView flagCode;
-    public TextView flagEngName;
-    public TextView flagShortName;
+    ImageView imageView;
+    TextView flagKorName;
+    TextView flagCode;
+    TextView flagEngName;
+    TextView flagShortName;
 }
