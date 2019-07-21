@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/flagImage"
+        android:layout_width="85dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/kr" />
+
+    <TextView
+        android:id="@+id/flagKorName"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/flagImage"
+        android:layout_marginLeft="10dp"
+        android:text="대한민국"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/flagEngName"
+        android:layout_toEndOf="@+id/flagImage"
+        android:layout_below="@+id/flagKorName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="South Korea"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/flagCode"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/flagKorName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/flagEngName"
+        android:text="419"
+        android:textAlignment="textEnd" />
+
+    <TextView
+        android:id="@+id/flagShortName"
+        android:layout_toEndOf="@+id/flagImage"
+        android:layout_below="@+id/flagEngName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="KR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
