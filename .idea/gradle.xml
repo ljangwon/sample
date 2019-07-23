@@ -10,6 +10,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/flag" />
+            <option value="$PROJECT_DIR$/loginexam" />
+            <option value="$PROJECT_DIR$/packagemanagerexam" />
             <option value="$PROJECT_DIR$/weather" />
           </set>
         </option>

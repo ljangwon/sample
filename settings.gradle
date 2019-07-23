@@ -1,1 +1,1 @@
-include ':app', ':flag', ':weather'
+include ':app', ':flag', ':weather', ':loginexam', ':packagemanagerexam'
