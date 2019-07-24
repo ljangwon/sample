@@ -1,4 +1,4 @@
-package com.example.flag;
+package com.example.dcontacts;
 
 import org.junit.Test;
 

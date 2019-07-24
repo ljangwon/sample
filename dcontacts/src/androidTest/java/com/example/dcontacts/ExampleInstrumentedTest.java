@@ -1,4 +1,4 @@
-package com.example.sample;
+package com.example.dcontacts;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under text.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.sample", appContext.getPackageName());
+        assertEquals("com.example.dcontacts", appContext.getPackageName());
     }
 }
