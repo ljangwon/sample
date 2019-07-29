@@ -1,1 +1,1 @@
-include ':flag', ':weather', ':loginexam', ':packagemanagerexam', ':dcontacts'
+include ':flag', ':weather', ':loginexam', ':packagemanagerexam', ':dcontacts', ':stopwatch'
