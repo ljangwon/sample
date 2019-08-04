@@ -27,7 +27,7 @@
     <TextView
         android:id="@+id/record"
         android:layout_width="fill_parent"
-        android:layout_height="300dp"
+        android:layout_height="100dp"
         android:textSize="20sp"
         android:padding="10dp"
         />
@@ -44,6 +44,7 @@
             android:onClick="myOnClick"
             android:text="시작"
             />
+
         <Button
             android:id="@+id/btn_rec"
             android:layout_width="0px"
@@ -52,8 +53,37 @@
             android:onClick="myOnClick"
             android:text="기록"
             android:enabled="false"
-
             />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_above="@+id/layout"/>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:padding="7dp"
+        android:id="@+id/layout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="메세지를 입력해주세요."/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전송"
+            />
+
     </LinearLayout>
 
 </LinearLayout>
