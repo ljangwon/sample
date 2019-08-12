@@ -1,10 +1,17 @@
 package com.example.stopwatch;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.telecom.PhoneAccount;
+import android.telecom.PhoneAccountHandle;
+import android.telecom.TelecomManager;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -27,32 +34,24 @@ import java.util.Map;
 import java.util.Random;
 
 public class MainActivity extends Activity {
-    private static final String TAG = "Firebase Test" ;
+    private static final String TAG = "Firebase Test";
     TextView myOutput;
     TextView myRec;
     Button myBtnStart;
     Button myBtnRec;
 
-    final static int Init =0;
-    final static int Run =1;
-    final static int Pause =2;
+    final static int Init = 0;
+    final static int Run = 1;
+    final static int Pause = 2;
 
     int cur_Status = Init; //현재의 상태를 저장할변수를 초기화함.
-    int myCount=1;
+    int myCount = 1;
     long myBaseTime;
     long myPauseTime;
 
-    private Button button;
-    private EditText editText;
-    private ListView listView;
 
-    private ArrayList<String> list = new ArrayList<>();
-    private ArrayAdapter<String> arrayAdapter;
 
-    private String name, chat_msg, chat_user;
-    private DatabaseReference reference = FirebaseDatabase.getInstance()
-            .getReference().child("message");
-
+    @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,57 +60,6 @@ public class MainActivity extends Activity {
         myRec = (TextView) findViewById(R.id.record);
         myBtnStart = (Button) findViewById(R.id.btn_start);
         myBtnRec = (Button) findViewById(R.id.btn_rec);
-
-        listView = (ListView) findViewById(R.id.list);
-        button = (Button) findViewById(R.id.button);
-        editText = (EditText) findViewById(R.id.editText);
-
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
-        listView.setAdapter(arrayAdapter);
-
-        name = "Guest " + new Random().nextInt(1000);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
-
-                Map<String, Object> map = new HashMap<String, Object>();
-
-                String key = reference.push().getKey();
-                reference.updateChildren(map);
-
-                DatabaseReference root = reference.child(key);
-
-                Map<String, Object> objectMap = new HashMap<String, Object>();
-
-                objectMap.put("name", name);
-                objectMap.put("text", editText.getText().toString());
-
-                root.updateChildren(objectMap);
-                editText.setText("");
-            }
-        });
-
-        reference.addChildEventListener(new ChildEventListener() {
-            @Override public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                chatConversation(dataSnapshot);
-            }
-
-            @Override public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                chatConversation(dataSnapshot);
-            }
-
-            @Override public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
     }
 
 
@@ -121,18 +69,7 @@ public class MainActivity extends Activity {
         super.onDestroy();
     }
 
-    private void chatConversation(DataSnapshot dataSnapshot) {
-        Iterator i = dataSnapshot.getChildren().iterator();
 
-        while (i.hasNext()) {
-            chat_user = (String) ((DataSnapshot) i.next()).getValue();
-            chat_msg = (String) ((DataSnapshot) i.next()).getValue();
-
-            arrayAdapter.add(chat_user + " : " + chat_msg);
-        }
-
-        arrayAdapter.notifyDataSetChanged();
-    }
 
     public void myOnClick(View v){
         switch(v.getId()){

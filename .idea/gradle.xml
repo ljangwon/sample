@@ -8,10 +8,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/chatfirebase" />
             <option value="$PROJECT_DIR$/dcontacts" />
+            <option value="$PROJECT_DIR$/firebasedbtest" />
             <option value="$PROJECT_DIR$/flag" />
             <option value="$PROJECT_DIR$/loginexam" />
             <option value="$PROJECT_DIR$/packagemanagerexam" />
+            <option value="$PROJECT_DIR$/phonenumber" />
             <option value="$PROJECT_DIR$/stopwatch" />
             <option value="$PROJECT_DIR$/weather" />
           </set>
